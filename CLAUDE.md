@@ -37,6 +37,7 @@ blender-mcp/
 │   ├── troubleshooting.md         # トラブルシューティング
 │   └── project_template.md        # 子プロジェクト作成手順
 │
+├── .claude/commands/         # ★ スラッシュコマンド（/blender-new 等）
 ├── .guardrails/             # AI行動規範・チェックリスト
 ├── prompts/                 # 共有プロンプトテンプレート
 ├── scripts/                 # 共有bpyスクリプト + ユーティリティ
