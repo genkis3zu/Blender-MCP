@@ -1,0 +1,26 @@
+# Blender
+*.blend1
+*.blend2
+
+# Renders (large files - keep structure, ignore outputs)
+renders/preview/*.png
+renders/final/*.png
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Guardrail reports (auto-generated)
+.guardrails/report.json
+.guardrails/report.md
+
+# IDE
+.vscode/
+*.swp
+*.swo

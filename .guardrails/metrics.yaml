@@ -1,0 +1,26 @@
+version: 1
+metrics:
+  - key: docs_update_rate
+    desc: "変更を伴うコミットのうち docs を同時に更新した割合"
+    type: ratio
+
+  - key: conventional_commits_ratio
+    desc: "直近コミットのうち Conventional Commits に適合する比率"
+    type: ratio
+
+  - key: guardrail_commit_count
+    desc: "guardrail 更新コミット数（docs(guardrail): プレフィックス）"
+    type: count
+
+  - key: script_reuse_count
+    desc: "scripts/ ディレクトリ内の再利用スクリプト数"
+    type: count
+
+  - key: model_version_count
+    desc: "models/wip/ 内のバージョン付きファイル数"
+    type: count
+
+report:
+  format: ["json", "markdown"]
+  out_json: ".guardrails/report.json"
+  out_md: ".guardrails/report.md"

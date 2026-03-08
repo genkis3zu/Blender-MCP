@@ -1,0 +1,28 @@
+version: 2
+paths:
+  project_roots: ["scripts/", "prompts/", "projects/"]
+  output_dirs: ["projects/*/models/", "projects/*/renders/", "projects/*/exports/"]
+  docs_files: ["CLAUDE.md", "blendermcp_spec.md", "docs/workflow.md", "docs/blender_mcp_reference.md"]
+  guardrail_files:
+    - ".guardrails/checklist.md"
+    - ".guardrails/claude_meta.md"
+    - ".guardrails/codex_meta.md"
+    - ".guardrails/gemini_meta.md"
+    - ".guardrails/system_architecture.md"
+    - ".guardrails/role.md"
+    - ".guardrails/meta_relay.md"
+    - ".guardrails/glossary.md"
+    - ".guardrails/README.md"
+metrics_window_days: 30
+
+thresholds:
+  docs_update_rate_min: 0.5
+  conventional_commits_ratio_min: 0.7
+  rollback_documented_min: 0
+
+naming:
+  guardrail_commit_prefix: "docs(guardrail):"
+  conventional_regex: "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\\(.+\\))?:\\s"
+  object_naming: "snake_case (英語)"
+  material_naming: "用途_色 (例: body_red, metal_silver)"
+  version_naming: "_v001, _v002, ..."

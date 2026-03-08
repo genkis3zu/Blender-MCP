@@ -1,0 +1,36 @@
+import subprocess, os
+from datetime import datetime, timedelta
+
+def git(args: str | list[str]) -> str:
+    if isinstance(args, str):
+        args = args.split()
+    return subprocess.check_output(["git", *args], text=True).strip()
+
+def commit_msgs_since(days: int):
+    since = (datetime.utcnow() - timedelta(days=days)).isoformat(timespec="seconds") + "Z"
+    out = git(["log", "--since", since, "--pretty=%s"])
+    return [l for l in out.splitlines() if l.strip()]
+
+def changed_files_since(days: int):
+    since = (datetime.utcnow() - timedelta(days=days)).isoformat(timespec="seconds") + "Z"
+    out = git(["log", "--since", since, "--name-only", "--pretty=format:"])
+    return [l for l in out.splitlines() if l.strip()]
+
+def last_modified_epoch(path: str) -> int | None:
+    try:
+        ts = git(["log", "-1", "--format=%ct", "--", path])
+        return int(ts)
+    except subprocess.CalledProcessError:
+        return None
+
+def count_files_in(directory: str, extension: str = "") -> int:
+    """Count files in a directory, optionally filtered by extension."""
+    if not os.path.isdir(directory):
+        return 0
+    count = 0
+    for f in os.listdir(directory):
+        if extension and not f.endswith(extension):
+            continue
+        if os.path.isfile(os.path.join(directory, f)):
+            count += 1
+    return count
