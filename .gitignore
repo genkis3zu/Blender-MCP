@@ -24,3 +24,11 @@ __pycache__/
 .vscode/
 *.swp
 *.swo
+
+.cc-attachments/
+
+# Local Claude settings
+.claude/settings.local.json
+
+# WIP blend files (keep only latest version in commits)
+projects/*/models/wip/
